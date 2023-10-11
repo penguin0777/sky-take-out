@@ -77,7 +77,7 @@ public class EmployeeController {
         return Result.success();
     }
     /**
-     * 登录
+     * 新增员工
      *
      * @param employeeDTO
      * @return

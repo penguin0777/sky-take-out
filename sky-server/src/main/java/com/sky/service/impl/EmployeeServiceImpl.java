@@ -67,6 +67,10 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employee;
     }
 
+    /**
+     * 新增员工
+     * @param employeeDTO
+     */
     @Override
     public void save(EmployeeDTO employeeDTO) {
         Employee employee = new Employee();
@@ -77,14 +81,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         //设置密码
         employee.setPassword(DigestUtils.md5DigestAsHex(PasswordConstant.DEFAULT_PASSWORD.getBytes()));
-        //创建修改时间
-        employee.setCreateTime(LocalDateTime.now());
-        employee.setUpdateTime(LocalDateTime.now());
-        //创建人修改人
-
-        employee.setUpdateUser(BaseContext.getCurrentId());
-        employee.setCreateUser(BaseContext.getCurrentId());
-        employeeMapper.insert(employee);
+//        //创建修改时间
+//        employee.setCreateTime(LocalDateTime.now());
+//        employee.setUpdateTime(LocalDateTime.now());
+//        //创建人修改人
+//
+//        employee.setUpdateUser(BaseContext.getCurrentId());
+//        employee.setCreateUser(BaseContext.getCurrentId());
+       employeeMapper.insert(employee);
     }
 
     /**
@@ -135,8 +139,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void update(EmployeeDTO employeeDTO) {
         Employee employee = new Employee();
         BeanUtils.copyProperties(employeeDTO,employee);
-        employee.setUpdateTime(LocalDateTime.now());
-        employee.setUpdateUser(BaseContext.getCurrentId());
+//        employee.setUpdateTime(LocalDateTime.now());
+//        employee.setUpdateUser(BaseContext.getCurrentId());
         employeeMapper.update(employee);
     }
 
