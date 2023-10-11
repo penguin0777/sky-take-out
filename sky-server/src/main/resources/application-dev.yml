@@ -6,3 +6,8 @@ sky:
     database: sky_take_out
     username: root
     password: 998712
+  alioss:
+    endpoint: oss-cn-beijing.aliyuncs.com
+    bucket-name: web-penguin
+    access-key-id: LTAI5tBhC1WpM9eTyYHsU55k
+    access-key-secret: gBwCnMmJUHo3QgC5hJWGuHrSEguBZV
