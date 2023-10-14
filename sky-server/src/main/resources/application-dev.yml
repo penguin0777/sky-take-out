@@ -11,3 +11,7 @@ sky:
     bucket-name: web-penguin
     access-key-id: LTAI5tBhC1WpM9eTyYHsU55k
     access-key-secret: gBwCnMmJUHo3QgC5hJWGuHrSEguBZV
+  redis:
+    host: localhost
+    port: 6379
+    database: 9
