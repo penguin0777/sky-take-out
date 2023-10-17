@@ -97,7 +97,7 @@ public class DishServicelmpl implements DishService {
     }
 
     /**
-     * 根据id查询菜品
+     * 根据菜品id查询菜品
      * @param id
      * @return
      */
@@ -146,7 +146,7 @@ public class DishServicelmpl implements DishService {
     }
 
     /**
-     * 根据分类id查询菜品
+     * 根据分类id查询菜品（管理端）
      * @param categoryId
      * @return
      */
@@ -155,6 +155,41 @@ public class DishServicelmpl implements DishService {
       List<Dish>  dishes = dishMapper.getByCategoryId(categoryId);
 
         return dishes;
+    }
+    /**
+     * 根据分类id查询菜品（用户端）
+     * @param dish
+     * @return
+     */
+    @Override
+    public List<DishVO> listWithFlavor(Dish dish) {
+        List<Dish> dishList = dishMapper.list(dish);
+
+        List<DishVO> dishVOList = new ArrayList<>();
+
+        for (Dish d : dishList) {
+            DishVO dishVO = new DishVO();
+            BeanUtils.copyProperties(d,dishVO);
+
+            //根据菜品id查询对应的口味
+            List<DishFlavor> flavors = dishFlavorMapper.getByDishId(d.getId());
+
+            dishVO.setFlavors(flavors);
+            dishVOList.add(dishVO);
+        }
+
+        return dishVOList;
+    }
+
+    /**
+     * 菜品起售停售
+     * @param id
+     * @param status
+     */
+    @Override
+    public void startostop(Long id, Integer status) {
+        dishMapper.updatestatus(id,status);
+
     }
 
 }

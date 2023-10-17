@@ -8,6 +8,7 @@ import com.sky.enumeration.OperationType;
 import com.sky.vo.DishVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -71,4 +72,20 @@ public interface DishMapper {
 
     @Select("select * from  dish where category_id =#{categoryId}")
     List<Dish> getByCategoryId(Long categoryId);
+
+    /**
+     * 根据菜品要求查询菜品
+     * @param dish
+     * @return
+     */
+    @Select("select * from  dish where category_id=#{categoryId} and status=#{status}")
+    List<Dish> list(Dish dish);
+
+    /**
+     * 菜品起售停售
+     * @param id
+     * @param status
+     */
+    @Update("update dish set status=#{status} where id=#{id}")
+    void updatestatus(Long id, Integer status);
 }
