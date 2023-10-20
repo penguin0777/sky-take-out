@@ -106,4 +106,27 @@ public class ShoppingCarServicelmpl implements ShoppingCarService {
         Long userid = BaseContext.getCurrentId();
         shoppingCarMapper.delectByUserId(userid);
     }
+
+    /**
+     * 删除购物车的一个
+     * @param shoppingCartDTO
+     */
+    @Override
+    public void subShoppingCar(ShoppingCartDTO shoppingCartDTO) {
+    ShoppingCart shoppingCart = new ShoppingCart();
+    BeanUtils.copyProperties(shoppingCartDTO,shoppingCart);
+    Long userid = BaseContext.getCurrentId();
+    shoppingCart.setUserId(userid);
+    List<ShoppingCart>  list =shoppingCarMapper.list(shoppingCart);
+    ShoppingCart cart = list.get(0);
+    if(cart.getNumber()>1){
+        cart.setNumber(cart.getNumber()-1);//更新数据
+        shoppingCarMapper.updateNumberbyId(cart);
+    }
+    else{
+        shoppingCarMapper.deletebyId(cart);
+    }
+
+
+    }
 }
