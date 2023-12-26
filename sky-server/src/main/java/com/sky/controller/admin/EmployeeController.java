@@ -13,6 +13,7 @@ import com.sky.utils.JwtUtil;
 import com.sky.vo.EmployeeLoginVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -28,12 +29,13 @@ import java.util.Map;
 @RequestMapping("/admin/employee")
 @Slf4j
 @Api(tags = "员工相关接口")
+@RequiredArgsConstructor
 public class EmployeeController {
 
-    @Autowired
-    private EmployeeService employeeService;
-    @Autowired
-    private JwtProperties jwtProperties;
+
+    private final EmployeeService employeeService;
+
+    private  final JwtProperties jwtProperties;
 
     /**
      * 登录

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/admin/shop")
 @Slf4j
 @Api(tags ="店铺相关接口")
-public class ShopController {
+public class  ShopController {
     public static final  String KEY = "SHOP_STATUS";
     @Autowired
     private RedisTemplate redisTemplate;

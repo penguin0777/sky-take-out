@@ -3,6 +3,7 @@ package com.sky.controller.user;
 import com.sky.result.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -11,11 +12,12 @@ import org.springframework.web.bind.annotation.*;
 @RestController("userShopController")
 @RequestMapping("/user/shop")
 @Slf4j
+@RequiredArgsConstructor
 @Api(tags ="店铺相关接口(用户端)")
 public class ShopController {
     public static final  String KEY = "SHOP_STATUS";
-    @Autowired
-    private RedisTemplate redisTemplate;
+
+    private final RedisTemplate redisTemplate;
 
 
 
